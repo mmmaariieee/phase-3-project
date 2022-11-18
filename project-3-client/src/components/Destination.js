@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ReviewList from './ReviewList'
 import AddReview from './AddReview'
 
 function Destination({destination, handleDelete}) {
-  const {id, city_name, country_name, continent, img_url, reviews, created_at, updated_at} = destination;
+  const {id, city_name, country_name, continent, img_url, reviews} = destination;
   const [destReviews, setDestReviews] = useState([]);
 
   // useEffect(() => {
@@ -22,6 +22,8 @@ function Destination({destination, handleDelete}) {
           <img className='image' src={img_url} alt={city_name}/>
           <h2>{country_name}</h2>
           <h2>{continent?.continent_name}</h2>
+          <button className='edit'
+          >Edit</button>
           <button
           className='delete'
           onClick={() => handleDelete(id)}

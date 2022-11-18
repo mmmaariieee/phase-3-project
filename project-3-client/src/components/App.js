@@ -25,6 +25,11 @@ function App() {
     setReviews([...reviews, addedReview])
   }
 
+  function patchedDestination(updatedDestination){
+    console.log(updatedDestination)
+    setDestinations([...destinations, updatedDestination])
+  }
+
   function deleteDestination(id) {
     const newDestinations = destinations.filter(
       (destination) => destination.id !== id
@@ -43,6 +48,8 @@ function App() {
               <DestinationsContainer
                 destinations={destinations}
                 deleteDestination={deleteDestination}
+                patchedDestination={patchedDestination}
+                // selectedDestination={handleEditDestination}
               />
             </>
           }
