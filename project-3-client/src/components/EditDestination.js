@@ -1,71 +1,73 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-function AddDestinationsForm({ postedDestination }) {
+function EditDestination({patchedDestination}) {
+
   const [formData, setFormData] = useState({
     city_name: "",
     image_url: "",
     country_name: "",
-    continent: "",
+    continent_id: "",
   });
 
-  function handleChange(e) {
+  function handleUpdateChange(e) {
     console.log(e.target.value)
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
-
-  function handleSubmit() {
-    const addedDestination = {
+  function handleUpdateSubmit(e) {
+    e.preventDefault()
+    const updatedDestination = {
       city_name: formData.city_name,
       image_url: formData.image_url,
       country_name: formData.country_name,
-      continent: formData.continent,
+      continent: formData.continent_id,
     };
 
     fetch("http://localhost:9292/destinations", {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(addedDestination),
+      body: JSON.stringify(updatedDestination),
     })
       .then((r) => r.json())
-      .then((data) => postedDestination(data));
+      .then((data) => patchedDestination(data));
   }
 
   return (
-    <div className="destination_form">
-      <form className="form" onSubmit={handleSubmit}>
+    <div>
+      <div className="edit_destination">
+      <form className="edit_form" onSubmit={handleUpdateSubmit}>
         <input
-          className="city_name"
+          className="edit_city_name"
           type="text"
           name="city_name"
-          placeholder="Add City Name"
           value={formData.city_name}
-          onChange={handleChange}
+          placeholder="Edit City Name"
+          onChange={handleUpdateChange}
         ></input>
         <input
-          className="image_url"
+          className="edit_image_url"
           type="text"
           name="image_url"
-          placeholder="Add Image URL"
           value={formData.image_url}
-          onChange={handleChange}
+          placeholder="Edit Image URL"
+          onChange={handleUpdateChange}
         ></input>
         <input
-          className="country_name"
+          className="edit_country_name"
           type="text"
           name="country_name"
-          placeholder="Add Country Name"
           value={formData.country_name}
-          onChange={handleChange}
+          placeholder="Edit Country Name"
+          onChange={handleUpdateChange}
         ></input>
-        <label for="continents">Pick a Continent:</label>
+        <label for="continents">Pick a New Continent:</label>
         <select
           name="continent"
           value={formData.continent}
-          onChange={handleChange}
+          onChange={handleUpdateChange}
         >
           <optgroup label="Continents">
             <option>North America</option>
@@ -77,12 +79,12 @@ function AddDestinationsForm({ postedDestination }) {
             <option>Antarctica</option>
           </optgroup>
         </select>
-        <button className="add_destination" type="submit">
-          Add Destination
+        <button className="edit_destination_button" type="submit">
+          Update
         </button>
       </form>
     </div>
-  );
+    </div>
+  )
 }
-
-export default AddDestinationsForm;
+export default EditDestination;
