@@ -12,7 +12,7 @@ function EditDestination({destination, onChangeForm, onEditDestination}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`http://localhost:3001/destinations/${destination.id}`, {
+    fetch(`http://localhost:9292/destinations/${destination.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

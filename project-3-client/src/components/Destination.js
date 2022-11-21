@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReviewList from './ReviewList'
 import AddReview from './AddReview'
 
-function Destination({destination, onSelectDestination, handleDelete,}) {
+function Destination({destination, onSelectDestination, handleDelete}) {
   const {id, city_name, country_name, continent, img_url, reviews} = destination;
   const [destReviews, setDestReviews] = useState([]);
 

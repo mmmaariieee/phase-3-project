@@ -5,7 +5,6 @@ import DestinationsContainer from "./DestinationsContainer";
 import AddDestinationsForm from "./AddDestinationsForm";
 import NavBar from "./NavBar";
 import AddReviewForm from "./AddReviewForm";
-import EditDestination from "./EditDestination";
 
 function App() {
   const [destinations, setDestinations] = useState([]);

@@ -3,7 +3,6 @@ import SearchFilter from "./SearchFilter";
 import OrderBy from "./OrderBy";
 import Destination from "./Destination";
 import Filter from "./Filter";
-import EditDestination from "./EditDestination";
 
 
 function DestinationsContainer({ destinations, deleteDestination}) {
@@ -46,7 +45,6 @@ function DestinationsContainer({ destinations, deleteDestination}) {
         category={selectedCategory}
         onCategoryChange={handleCategoryChange}
       />
-      <EditDestination/>
       <SearchFilter search={search} handleSearch={handleSearch} />
       <OrderBy />
       <div className='destinationsDiv'>
