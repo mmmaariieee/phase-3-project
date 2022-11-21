@@ -5,11 +5,10 @@ import Destination from "./Destination";
 import Filter from "./Filter";
 import EditDestination from "./EditDestination";
 
-function DestinationsContainer({ destinations, setDestinations, deleteDestination, patchedDestination }) {
+
+function DestinationsContainer({ destinations, deleteDestination}) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedDestination, setSelectedDestination] = useState(null)
-
 
   const filteredDestinations = destinations
   .filter((destination) =>
@@ -39,13 +38,7 @@ function DestinationsContainer({ destinations, setDestinations, deleteDestinatio
     }).then(() => deleteDestination(id));
   }
 
-  function handleEditDestination() {
-    const updatedDestination = destinations.map((destination) =>
-      destination.id === updatedDestination.id ? updatedDestination : destination
-    );
-    setSelectedDestination(updatedDestination);
-    setDestinations(updatedDestination);
-  }
+  
 
   return (
     <div>
@@ -53,8 +46,8 @@ function DestinationsContainer({ destinations, setDestinations, deleteDestinatio
         category={selectedCategory}
         onCategoryChange={handleCategoryChange}
       />
+      <EditDestination/>
       <SearchFilter search={search} handleSearch={handleSearch} />
-      <EditDestination patchedDestination={patchedDestination}/>
       <OrderBy />
       <div className='destinationsDiv'>
         {eachDestination}

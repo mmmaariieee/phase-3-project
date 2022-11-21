@@ -5,10 +5,12 @@ import DestinationsContainer from "./DestinationsContainer";
 import AddDestinationsForm from "./AddDestinationsForm";
 import NavBar from "./NavBar";
 import AddReviewForm from "./AddReviewForm";
+import EditDestination from "./EditDestination";
 
 function App() {
   const [destinations, setDestinations] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [selectedDestination, setSelectedDestination] = useState(null)
 
   useEffect(() => {
     fetch("http://localhost:9292/destinations")
@@ -16,6 +18,20 @@ function App() {
       .then((data) => setDestinations(data));
   }, []);
 
+  function handleChangeForm(name, value) {
+    setSelectedDestination({
+      ...selectedDestination,
+      [name]: value,
+    });
+  }
+
+  function handleEditDestination(updatedDestination) {
+    const updatedDestinations = destinations.map((destination) =>
+      destination.id === updatedDestination.id ? updatedDestination : destination
+    );
+    setSelectedDestination(updatedDestination);
+    setDestinations(updatedDestinations);
+  }
 
   function postedDestination(addedDestination) {
     setDestinations([...destinations, addedDestination]);
@@ -23,11 +39,6 @@ function App() {
 
   function postedReview(addedReview) {
     setReviews([...reviews, addedReview])
-  }
-
-  function patchedDestination(updatedDestination){
-    console.log(updatedDestination)
-    setDestinations([...destinations, updatedDestination])
   }
 
   function deleteDestination(id) {
@@ -47,9 +58,11 @@ function App() {
             <>
               <DestinationsContainer
                 destinations={destinations}
+                destination={selectedDestination}
                 deleteDestination={deleteDestination}
-                patchedDestination={patchedDestination}
-                // selectedDestination={handleEditDestination}
+                onChangeForm={handleChangeForm}
+                onEditDestination={handleEditDestination}
+                onSelectDestination={setSelectedDestination}
               />
             </>
           }
