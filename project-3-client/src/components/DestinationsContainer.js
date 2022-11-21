@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SearchFilter from "./SearchFilter";
-import OrderBy from "./OrderBy";
 import Destination from "./Destination";
 import Filter from "./Filter";
 import EditDestination from "./EditDestination";
@@ -70,7 +69,6 @@ function DestinationsContainer({ destinations, setDestinations, deleteDestinatio
         onEditDestination={handleEditDestination}
         onSelectDestination={setSelectedDestination}
       />
-      <OrderBy />
       <div className='destinationsDiv'>
         {eachDestination}
       </div>

@@ -20,7 +20,7 @@ function Destination({destination, onSelectDestination, handleDelete}) {
           <img className='image' src={img_url} alt={city_name}/>
           <h2>{country_name}</h2>
           <h2>{continent?.continent_name}</h2>
-          <button className='edit' onClick={handleClick}
+          <button className='edit' onClick={() => handleClick(id)}
           >Edit</button>
           <button
           className='delete'
@@ -28,7 +28,7 @@ function Destination({destination, onSelectDestination, handleDelete}) {
           >Delete</button>
         </div>
       </div>
-      <ReviewList reviews={reviews} destinationId={id}/>
+      <ReviewList reviews={reviews} destinationId={id} setDestReviews={setDestReviews}/>
       <AddReview/>
     </>
   )

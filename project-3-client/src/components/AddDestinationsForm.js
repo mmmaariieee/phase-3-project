@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function AddDestinationsForm({ postedDestination }) {
   const [formData, setFormData] = useState({
     city_name: "",
-    image_url: "",
+    img_url: "",
     country_name: "",
     continent: "",
   });
@@ -18,7 +18,7 @@ function AddDestinationsForm({ postedDestination }) {
   function handleSubmit() {
     const addedDestination = {
       city_name: formData.city_name,
-      image_url: formData.image_url,
+      img_url: formData.img_url,
       country_name: formData.country_name,
       continent: formData.continent,
     };
@@ -48,9 +48,9 @@ function AddDestinationsForm({ postedDestination }) {
         <input
           className="image_url"
           type="text"
-          name="image_url"
+          name="img_url"
           placeholder="Add Image URL"
-          value={formData.image_url}
+          value={formData.img_url}
           onChange={handleChange}
         ></input>
         <input
