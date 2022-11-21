@@ -9,7 +9,6 @@ import AddReviewForm from "./AddReviewForm";
 function App() {
   const [destinations, setDestinations] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [selectedDestination, setSelectedDestination] = useState(null)
 
   useEffect(() => {
     fetch("http://localhost:9292/destinations")
@@ -17,20 +16,6 @@ function App() {
       .then((data) => setDestinations(data));
   }, []);
 
-  function handleChangeForm(name, value) {
-    setSelectedDestination({
-      ...selectedDestination,
-      [name]: value,
-    });
-  }
-
-  function handleEditDestination(updatedDestination) {
-    const updatedDestinations = destinations.map((destination) =>
-      destination.id === updatedDestination.id ? updatedDestination : destination
-    );
-    setSelectedDestination(updatedDestination);
-    setDestinations(updatedDestinations);
-  }
 
   function postedDestination(addedDestination) {
     setDestinations([...destinations, addedDestination]);
@@ -57,11 +42,6 @@ function App() {
             <>
               <DestinationsContainer
                 destinations={destinations}
-                destination={selectedDestination}
-                deleteDestination={deleteDestination}
-                onChangeForm={handleChangeForm}
-                onEditDestination={handleEditDestination}
-                onSelectDestination={setSelectedDestination}
               />
             </>
           }

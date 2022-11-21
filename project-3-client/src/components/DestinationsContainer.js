@@ -3,11 +3,13 @@ import SearchFilter from "./SearchFilter";
 import OrderBy from "./OrderBy";
 import Destination from "./Destination";
 import Filter from "./Filter";
+import EditDestination from "./EditDestination";
 
 
-function DestinationsContainer({ destinations, deleteDestination}) {
+function DestinationsContainer({ destinations, setDestinations, deleteDestination}) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedDestination, setSelectedDestination] = useState(null)
 
   const filteredDestinations = destinations
   .filter((destination) =>
@@ -22,6 +24,21 @@ function DestinationsContainer({ destinations, deleteDestination}) {
   const eachDestination = filteredDestinations.map((destination) => (
     <Destination handleDelete={handleDelete} destination={destination} key={destination.id} />
   ));
+
+  function handleChangeForm(name, value) {
+    setSelectedDestination({
+      ...selectedDestination,
+      [name]: value,
+    });
+  }
+
+  function handleEditDestination(updatedDestination) {
+    const updatedDestinations = destinations.map((destination) =>
+      destination.id === updatedDestination.id ? updatedDestination : destination
+    );
+    setSelectedDestination(updatedDestination);
+    setDestinations(updatedDestinations);
+  }
 
   function handleCategoryChange(category) {
     setSelectedCategory(category);
@@ -46,6 +63,13 @@ function DestinationsContainer({ destinations, deleteDestination}) {
         onCategoryChange={handleCategoryChange}
       />
       <SearchFilter search={search} handleSearch={handleSearch} />
+      <EditDestination
+        destination={selectedDestination}
+        deleteDestination={deleteDestination}
+        onChangeForm={handleChangeForm}
+        onEditDestination={handleEditDestination}
+        onSelectDestination={setSelectedDestination}
+      />
       <OrderBy />
       <div className='destinationsDiv'>
         {eachDestination}
