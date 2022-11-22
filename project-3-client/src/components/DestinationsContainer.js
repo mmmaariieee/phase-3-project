@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import SearchFilter from "./SearchFilter";
 import Destination from "./Destination";
 import Filter from "./Filter";
-import EditDestination from "./EditDestination";
 
 
-function DestinationsContainer({ destinations, setDestinations, deleteDestination}) {
+function DestinationsContainer({ destinations, deleteDestination}) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedDestination, setSelectedDestination] = useState(null)
+
+  // console.log(currentDestination)
 
   const filteredDestinations = destinations
   .filter((destination) =>
@@ -24,20 +24,6 @@ function DestinationsContainer({ destinations, setDestinations, deleteDestinatio
     <Destination handleDelete={handleDelete} destination={destination} key={destination.id} />
   ));
 
-  function handleChangeForm(name, value) {
-    setSelectedDestination({
-      ...selectedDestination,
-      [name]: value,
-    });
-  }
-
-  function handleEditDestination(updatedDestination) {
-    const updatedDestinations = destinations.map((destination) =>
-      destination.id === updatedDestination.id ? updatedDestination : destination
-    );
-    setSelectedDestination(updatedDestination);
-    setDestinations(updatedDestinations);
-  }
 
   function handleCategoryChange(category) {
     setSelectedCategory(category);
@@ -53,8 +39,6 @@ function DestinationsContainer({ destinations, setDestinations, deleteDestinatio
     }).then(() => deleteDestination(id));
   }
 
-  
-
   return (
     <div>
       <Filter
@@ -62,13 +46,12 @@ function DestinationsContainer({ destinations, setDestinations, deleteDestinatio
         onCategoryChange={handleCategoryChange}
       />
       <SearchFilter search={search} handleSearch={handleSearch} />
-      <EditDestination
-        destination={selectedDestination}
-        deleteDestination={deleteDestination}
-        onChangeForm={handleChangeForm}
-        onEditDestination={handleEditDestination}
-        onSelectDestination={setSelectedDestination}
-      />
+      {/* <EditDestination
+      destination={destination}
+      currentDestination={currentDestination}
+      setCurrentDestination={setCurrentDestination}
+      handleChange={handleChange}
+      /> */}
       <div className='destinationsDiv'>
         {eachDestination}
       </div>

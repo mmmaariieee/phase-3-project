@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import DestinationsContainer from "./DestinationsContainer";
-// import FavoriteDestinations from "./FavoriteDestinations";
 import AddDestinationsForm from "./AddDestinationsForm";
 import NavBar from "./NavBar";
 import AddReviewForm from "./AddReviewForm";
@@ -16,6 +15,9 @@ function App() {
       .then((data) => setDestinations(data));
   }, []);
 
+  function patchedDestination(updatedDestination) {
+    setDestinations([...destinations, updatedDestination])
+  }
 
   function postedDestination(addedDestination) {
     setDestinations([...destinations, addedDestination]);
@@ -42,6 +44,8 @@ function App() {
             <>
               <DestinationsContainer
                 destinations={destinations}
+                deleteDestination={deleteDestination}
+                patchedDestination={patchedDestination}
               />
             </>
           }

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import Review from './Review'
-import EditReview from './EditReview'
 
 function ReviewList({reviews, destinationId}) {
   const [displayedReviews, setDisplayedReviews] = useState([]);
@@ -31,7 +30,6 @@ function ReviewList({reviews, destinationId}) {
             />
           ))}
         </ul>
-        <EditReview/>
     </div>
   )
 }
