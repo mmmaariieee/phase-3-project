@@ -35,7 +35,7 @@ function AddReview({postedReview}) {
     <div className="review_form">
       <form className="form" onSubmit={handleSubmit}>
         <input
-          className="message"
+          className="add_message"
           type="text"
           name="message"
           placeholder="Add Message"
@@ -43,7 +43,7 @@ function AddReview({postedReview}) {
           onChange={handleChange}
         ></input>
         <input
-          className="stars"
+          className="stars_message"
           type="text"
           name="stars"
           placeholder="Add Stars"

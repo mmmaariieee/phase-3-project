@@ -1,6 +1,6 @@
 .image {
   float: center;
-  width:  280px;
+  width:  380px;
   height: 250px;
   object-fit: cover;
 }
@@ -10,7 +10,7 @@
   border: grey solid 1px;
   padding: 1rem;
   width: 20rem;
-  height: 33rem;
+  height: 27rem;
   margin: 1rem 3.5rem;
   box-shadow: 3px 4px black;
   font-family:'Courier New', Courier, monospace;
@@ -33,6 +33,11 @@
   font-family:'Courier New', Courier, monospace;
 }
 
+.delete:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
 /* .destinationsDiv {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10%, 1fr));
@@ -52,3 +57,254 @@
   cursor: pointer;
   font-family:'Courier New', Courier, monospace;
 }
+
+.edit:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.search {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.Filter {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.edit_form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.message_bar {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.nav_bar{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  text-align: center;
+  font-size: large;
+  font-family:'Courier New', Courier, monospace;;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.links {
+  list-style-type: none;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.edit_destination_button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.remove {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.remove:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.filter {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.edit_city_name {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.edit_image_url {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.edit_country_name {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.drop {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.city_name {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.image_url {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.country_name {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.add_continent {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+.add_destination {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.add_message {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 4px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: rgb(211,211,211);
+  font-weight: bold;
+}
+
+

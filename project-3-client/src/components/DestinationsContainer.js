@@ -4,7 +4,7 @@ import Destination from "./Destination";
 import Filter from "./Filter";
 
 
-function DestinationsContainer({ destinations, deleteDestination}) {
+function DestinationsContainer({ destinations, deleteDestination, editDest, handleEditForm, selectedDest, setSelectedDest }) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -21,7 +21,7 @@ function DestinationsContainer({ destinations, deleteDestination}) {
   });
 
   const eachDestination = filteredDestinations.map((destination) => (
-    <Destination handleDelete={handleDelete} destination={destination} key={destination.id} />
+    <Destination setSelectedDest={setSelectedDest} editDest={editDest} handleEditForm={handleEditForm} selectedDest={selectedDest} handleDelete={handleDelete} destination={destination} key={destination.id} />
   ));
 
 

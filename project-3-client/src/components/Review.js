@@ -12,7 +12,7 @@ function Review({review, onDeleteReview, destinationId}) {
   }
 
   return (
-    <div>
+    <div className='message_bar'>
       {/* <span className="user">{review.user.first_name} {review.user.last_name}</span> */}
       <br />
       <span className="stars">{review.stars}⭐️</span>

@@ -1,75 +1,63 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-function EditDestination( { id, patchedDestination, currentDestination } ) {
-  const [formData, setFormData] = useState({
-    city_name: "",
-    img_url: "",
-    country_name: "",
-    continent: "",
-  });
-console.log(currentDestination)
+function EditDestination({editDest, handleEditForm, selectedDest}) {
 
-console.log(formData)
-
-  function handleChange(e) {
-    console.log(e.target.value)
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  function handleInputChange(e) {
+    handleEditForm(e.target.name, e.target.value)
   }
 
-  function handleSubmit() {
-    const updatedDestination = {
-      city_name: formData.city_name,
-      img_url: formData.img_url,
-      country_name: formData.country_name,
-      continent: formData.continent,
-    };
-
-    fetch(`http://localhost:9292/destinations/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedDestination),
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch(`http://localhost:9292/destinations/${selectedDest.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(selectedDest),
     })
-      .then((r) => r.json())
-      .then((data) => patchedDestination(data));
-  }
+    .then(r => r.json())
+    .then(editDest)
+}
+
+const {city_name, img_url, country_name, continent} = selectedDest
+// console.log(selectedDest)
 
   return (
     <div>
       <div className="edit_destination">
-      <form className="edit_form" onSubmit={handleSubmit}
+      <form className="edit_form" 
+      onSubmit={handleSubmit}
       >
         <input
           className="edit_city_name"
           type="text"
           name="city_name"
-          value={formData.city_name}
-          onChange={handleChange}
-          placeholder="Edit City Name"
+          value={city_name}
+          onChange={handleInputChange}
+          placeholder="Edit City"
         ></input>
         <input
           className="edit_image_url"
           type="text"
           name="img_url"
-          value={formData.img_url}
-          onChange={handleChange}
+          value={img_url}
+          onChange={handleInputChange}
           placeholder="Edit Image URL"
         ></input>
         <input
           className="edit_country_name"
           type="text"
           name="country_name"
-          value={formData.country_name}
-          onChange={handleChange}
-          placeholder="Edit Country Name"
+          value={country_name}
+          onChange={handleInputChange}
+          placeholder="Edit Country"
         ></input>
-        <label for="continents">Pick a New Continent:</label>
+        <label htmlFor="continents">Pick a New Continent:</label>
         <select
+        className='drop'
           name="continent"
-          value={formData.continent}
-          onChange={handleChange}
+          value={continent?.continent_name}
+          onChange={handleInputChange}
         >
           <optgroup label="Continents">
             <option>North America</option>

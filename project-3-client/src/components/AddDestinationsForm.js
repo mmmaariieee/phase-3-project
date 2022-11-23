@@ -61,8 +61,9 @@ function AddDestinationsForm({ postedDestination }) {
           value={formData.country_name}
           onChange={handleChange}
         ></input>
-        <label for="continents">Pick a Continent:</label>
+        <label htmlFor="continents">Pick a Continent:</label>
         <select
+        className="add_continent"
           name="continent"
           value={formData.continent}
           onChange={handleChange}

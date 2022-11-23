@@ -4,6 +4,7 @@ function Filter({ category, onCategoryChange }) {
   return (
     <div className="Filter">
       <select
+      className="filter"
         name="filter"
         value={category}
         onChange={(e) => onCategoryChange(e.target.value)}

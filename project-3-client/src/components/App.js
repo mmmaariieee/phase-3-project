@@ -8,6 +8,7 @@ import AddReviewForm from "./AddReviewForm";
 function App() {
   const [destinations, setDestinations] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [selectedDest, setSelectedDest] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/destinations")
@@ -15,8 +16,18 @@ function App() {
       .then((data) => setDestinations(data));
   }, []);
 
-  function patchedDestination(updatedDestination) {
-    setDestinations([...destinations, updatedDestination])
+  function handleEditForm(name, value) {
+    setSelectedDest({
+      ...selectedDest, [name]: value,
+    })
+  }
+
+  function handleEditDest(updatedDestination) {
+    const updatedDestinations = destinations.map((destination) =>
+    destination.id === updatedDestination.id ? updatedDestination : destination
+    )
+    setSelectedDest(updatedDestination)
+    setDestinations(updatedDestinations)
   }
 
   function postedDestination(addedDestination) {
@@ -45,7 +56,10 @@ function App() {
               <DestinationsContainer
                 destinations={destinations}
                 deleteDestination={deleteDestination}
-                patchedDestination={patchedDestination}
+                selectedDest={selectedDest}
+                setSelectedDest={setSelectedDest}
+                editDest={handleEditDest}
+                handleEditForm={handleEditForm}
               />
             </>
           }
@@ -62,10 +76,6 @@ function App() {
             <AddReviewForm postedReview={postedReview}/>
           }
         />
-        {/* <Route
-          path="/favorite_destinations"
-          element={<FavoriteDestinations />}
-        /> */}
       </Routes>
     </>
   );
