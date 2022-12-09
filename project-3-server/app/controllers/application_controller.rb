@@ -48,13 +48,14 @@ class ApplicationController < Sinatra::Base
   end
 
   patch "/destinations/:id" do
-    destination = Destination.create(
+    updated_destination = 
+    Destination.find(params[:id])
+    updated_destination.update(
       city_name: params[:city_name],
       country_name: params[:country_name],
       img_url: params[:img_url],
-      continent_id: params[:continent_id]
     )
-    destination.to_json
+    updated_destination.to_json
   end
 
   delete "/destinations/:id" do

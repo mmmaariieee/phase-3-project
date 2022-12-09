@@ -20,7 +20,7 @@ function EditDestination({editDest, handleEditForm, selectedDest}) {
 }
 
 const {city_name, img_url, country_name, continent} = selectedDest
-// console.log(selectedDest)
+console.log(selectedDest)
 
   return (
     <div>
